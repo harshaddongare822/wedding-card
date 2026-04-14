@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>मराठी लग्नपत्रिका</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&family=Tiro+Devanagari+Marathi:ital@0;1&family=Marcellus&family=Tangerine:wght@400;700&family=Yesteryear&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-body: 'Tiro Devanagari Marathi', serif;
+      --font-heading: 'Marcellus', serif;
+      --font-script: 'Tangerine', cursive;
+      --font-couple: 'Tiro Devanagari Marathi', 'Noto Sans Devanagari', serif;
+      --pink-1: #f8d4df;
+      --pink-2: #f3b5c8;
+      --pink-3: #d67898;
+      --rose: #9a3d59;
+      --gold: #e8c98a;
+      --cream: #fff8f5;
+      --leaf: #6f8b61;
+      --shadow: 0 20px 50px rgba(132, 62, 92, 0.22);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at top, #fff4f8 0%, #ffdfe9 28%, #f6c7d6 55%, #efb3c7 100%);
+      color: #5c3241;
+      overflow-x: hidden;
+    }
+
+    .floating-blur,
+    .floating-blur::before,
+    .floating-blur::after {
+      position: fixed;
+      inset: auto;
+      border-radius: 50%;
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-blur {
+      width: 240px;
+      height: 240px;
+      top: 8%;
+      left: -70px;
+      background: rgba(255,255,255,0.38);
+    }
+
+    .floating-blur::before {
+      content: "";
+      width: 240px;
+      height: 240px;
+      right: -80px;
+      top: 260px;
+      background: rgba(255, 232, 193, 0.28);
+    }
+
+    .floating-blur::after {
+      content: "";
+      width: 220px;
+      height: 220px;
+      left: 20px;
+      bottom: 80px;
+      background: rgba(248, 180, 210, 0.22);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(430px, calc(100% - 22px));
+      margin: 18px auto;
+      background: linear-gradient(180deg, rgba(255,248,245,0.97), rgba(255,245,238,0.98));
+      border: 10px solid rgba(255,255,255,0.9);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .frame {
+      border: 5px solid rgba(237, 194, 208, 0.8);
+      border-radius: 28px;
+      margin: 14px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(180deg, #ffeff4 0%, #fff7f4 45%, #ffeac7 100%);
+    }
+
+    .curtain {
+      position: absolute;
+      top: 0;
+      width: 54%;
+      height: 180px;
+      background: linear-gradient(135deg, #f8c9d8, #ec9fba 55%, #f7c7d8);
+      box-shadow: inset 0 -10px 25px rgba(255,255,255,0.25);
+      z-index: 2;
+    }
+
+    .curtain.left {
+      left: -9%;
+      clip-path: ellipse(67% 100% at 22% 0%);
+      border-bottom-right-radius: 80px;
+    }
+
+    .curtain.right {
+      right: -9%;
+      clip-path: ellipse(67% 100% at 78% 0%);
+      border-bottom-left-radius: 80px;
+    }
+
+    .top-drape {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92%;
+      height: 110px;
+      background: linear-gradient(180deg, #f6bdd0, #eaa8be 80%);
+      border-bottom-left-radius: 50% 70px;
+      border-bottom-right-radius: 50% 70px;
+      z-index: 3;
+      box-shadow: inset 0 -8px 18px rgba(255,255,255,0.24);
+    }
+
+    .flowers {
+      position: absolute;
+      top: 92px;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      z-index: 2;
+      opacity: .9;
+      background:
+        radial-gradient(circle at 7% 0%, rgba(163, 205, 135, 0.95) 0 7px, transparent 8px),
+        radial-gradient(circle at 16% 20%, rgba(244, 177, 204, 0.85) 0 10px, transparent 11px),
+        radial-gradient(circle at 28% 15%, rgba(177, 215, 153, 0.9) 0 8px, transparent 9px),
+        radial-gradient(circle at 38% 10%, rgba(240, 170, 197, 0.9) 0 11px, transparent 12px),
+        radial-gradient(circle at 49% 16%, rgba(172, 214, 149, 0.9) 0 8px, transparent 9px),
+        radial-gradient(circle at 59% 14%, rgba(239, 164, 194, 0.88) 0 10px, transparent 11px),
+        radial-gradient(circle at 73% 10%, rgba(162, 206, 140, 0.95) 0 8px, transparent 9px),
+        radial-gradient(circle at 86% 16%, rgba(243, 176, 203, 0.92) 0 11px, transparent 12px),
+        linear-gradient(180deg, rgba(159,205,135,.8), transparent 60%);
+      filter: drop-shadow(0 8px 12px rgba(146, 77, 96, .18));
+    }
+
+    .flowers::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg,
+          transparent 0 24px,
+          rgba(140,180,120,.3) 24px 26px,
+          transparent 26px 52px);
+      mask: linear-gradient(to bottom, black 15%, transparent 100%);
+      -webkit-mask: linear-gradient(to bottom, black 15%, transparent 100%);
+    }
+
+    .hero {
+      position: relative;
+      padding: 185px 20px 36px;
+      text-align: center;
+      min-height: 760px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,243,247,.95) 0%, rgba(255,247,244,.94) 40%, rgba(255,235,199,.92) 100%);
+    }
+
+    .monogram {
+      position: absolute;
+      top: 34px;
+      left: 18px;
+      z-index: 4;
+      width: 74px;
+      height: 74px;
+      border-radius: 18px;
+      border: 2px solid rgba(255,255,255,.8);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-family: 'Cinzel', serif;
+      font-size: 34px;
+      font-weight: 700;
+      text-shadow: 0 3px 10px rgba(122, 55, 84, .35);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(3px);
+    }
+
+    .eyebrow {
+      letter-spacing: 3px;
+      font-size: 13px;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .title {
+      font-family: var(--font-script);
+      font-size: clamp(52px, 12vw, 76px);
+      color: #8a3550;
+      margin: 0;
+      line-height: 1.08;
+      position: relative;
+      z-index: 4;
+      text-shadow: 0 8px 18px rgba(197, 122, 151, .18);
+    }
+
+    .tagline {
+      font-family: var(--font-body);
+      margin: 14px auto 20px;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 290px;
+      color: #7a4756;
+      position: relative;
+      z-index: 4;
+    }
+
+    .couple-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 18px 0 14px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .floral-line {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      letter-spacing: 8px;
+      color: #b88a48;
+      text-align: center;
+      text-shadow: 0 4px 10px rgba(184, 138, 72, 0.22);
+      white-space: nowrap;
+    }
+
+    .top-floral {
+      margin-bottom: 10px;
+    }
+
+    .bottom-floral {
+      margin-top: 10px;
+    }
+
+    .couple {
+      font-family: var(--font-couple);
+      font-size: clamp(42px, 9.2vw, 68px);
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #8f2f50;
+      position: relative;
+      z-index: 4;
+      line-height: 1.15;
+      text-shadow: 0 8px 18px rgba(186, 110, 140, 0.24);
+      background: linear-gradient(180deg, #b04b73 0%, #8f2f50 45%, #6f1f3c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      padding: 0 10px 4px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 430px) {
+      .floral-line {
+        font-size: 15px;
+        letter-spacing: 5px;
+      }
+
+      .couple {
+        font-size: clamp(34px, 8.5vw, 54px);
+      }
+    }
+
+    .hero-card {
+      width: min(320px, 100%);
+      margin: 0 auto 24px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid rgba(202, 122, 149, .22);
+      border-radius: 24px;
+      padding: 16px 18px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 14px 30px rgba(135, 73, 98, 0.08);
+      position: relative;
+      z-index: 4;
+    }
+
+    .date-main {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      color: #7f2948;
+      margin: 0 0 12px;
+    }
+
+    .meta {
+      font-family: var(--font-body);
+      display: grid;
+      gap: 10px;
+      font-size: 14px;
+      color: #6a4451;
+    }
+
+    .meta strong { color: #8d3051; }
+
+    .stage {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 46px;
+      width: min(345px, 94%);
+      height: 270px;
+      z-index: 1;
+    }
+
+    .ocean {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 108px;
+      height: 76px;
+      background:
+        linear-gradient(180deg, rgba(138, 179, 224, .85), rgba(115, 155, 205, .78)),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.25) 0 3px, transparent 3px 9px);
+      border-top: 2px solid rgba(255,255,255,.45);
+      opacity: .85;
+    }
+
+    .grass {
+      position: absolute;
+      left: -6%;
+      right: -6%;
+      bottom: 0;
+      height: 138px;
+      background: linear-gradient(180deg, #cddaa8, #a9c487);
+      border-top-left-radius: 40% 30px;
+      border-top-right-radius: 40% 30px;
+    }
+
+    .path {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 118px;
+      height: 168px;
+      background: linear-gradient(180deg, #d89b8a, #c77c72);
+      clip-path: polygon(23% 0, 77% 0, 100% 100%, 0 100%);
+      opacity: .9;
+    }
+
+    .mandap {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 86px;
+      width: 185px;
+      height: 132px;
+      border-top: 10px solid #96505d;
+      border-left: 8px solid #84534e;
+      border-right: 8px solid #84534e;
+      background: rgba(255,255,255,.14);
+      box-shadow: inset 0 0 0 4px rgba(255, 193, 215, .35);
+    }
+
+    .mandap::before,
+    .mandap::after {
+      content: "";
+      position: absolute;
+      top: -14px;
+      width: 40px;
+      height: 16px;
+      background: radial-gradient(circle, #ff4fa0 0 25%, #d12a74 26% 60%, #6d934c 61% 100%);
+      background-size: 16px 16px;
+      border-radius: 20px;
+      filter: blur(.2px);
+    }
+
+    .mandap::before { left: 4px; width: 78px; }
+    .mandap::after { right: 4px; width: 78px; }
+
+    .pillar {
+      position: absolute;
+      bottom: 0;
+      width: 8px;
+      height: 122px;
+      background: linear-gradient(180deg, #fff0ef, #d5b0a7);
+    }
+
+    .pillar.left { left: 0; }
+    .pillar.right { right: 0; }
+
+    .couple-photo-frame {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 6px;
+      width: 165px;
+      height: 190px;
+      z-index: 3;
+      border-radius: 22px 22px 12px 12px;
+      padding: 6px;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(244,206,220,.95));
+      box-shadow: 0 14px 30px rgba(131, 63, 88, .18);
+      border: 2px solid rgba(255,255,255,.8);
+      overflow: hidden;
+    }
+
+    .couple-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px 18px 10px 10px;
+    }
+
+    .leaf, .leaf.right {
+      position: absolute;
+      bottom: 82px;
+      width: 60px;
+      height: 110px;
+      opacity: .78;
+      z-index: 2;
+    }
+
+    .leaf { left: 8px; }
+    .leaf.right { right: 8px; transform: scaleX(-1); }
+
+    .leaf span {
+      position: absolute;
+      bottom: 0;
+      width: 18px;
+      height: 86px;
+      background: linear-gradient(180deg, #8ba976, #59714d);
+      border-radius: 100% 0 100% 0;
+      transform-origin: bottom center;
+    }
+
+    .leaf span:nth-child(1) { left: 6px; transform: rotate(-28deg); }
+    .leaf span:nth-child(2) { left: 22px; height: 96px; transform: rotate(-7deg); }
+    .leaf span:nth-child(3) { left: 38px; transform: rotate(18deg); }
+
+    section {
+      padding: 22px 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-card {
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(214, 120, 152, .2);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 14px 25px rgba(146, 83, 106, .07);
+      backdrop-filter: blur(5px);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-family: var(--font-heading);
+      font-size: 22px;
+      color: #8d2f51;
+      text-align: center;
+    }
+
+    .section-sub {
+      font-family: var(--font-body);
+      text-align: center;
+      font-size: 13px;
+      color: #805260;
+      margin: -4px 0 16px;
+      line-height: 1.7;
+    }
+
+    .event-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .event-box {
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,243,247,.9), rgba(255,255,255,.92));
+      border: 1px solid rgba(212, 137, 163, .24);
+    }
+
+    .event-name {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      color: #8f3152;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .badge {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(214,120,152,.12);
+      color: #9b3d5c;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .info-line {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.8;
+      color: #65434f;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .count-item {
+      text-align: center;
+      padding: 14px 8px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff9fb, #ffeef3);
+      border: 1px solid rgba(214,120,152,.22);
+    }
+
+    .count-item strong {
+      display: block;
+      font-size: 24px;
+      color: #8f3152;
+      font-family: var(--font-heading);
+    }
+
+    .count-item span {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #865261;
+    }
+
+    .venue-box {
+      text-align: center;
+    }
+
+    .venue-name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: #8a2f4f;
+      margin-bottom: 8px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .btn {
+      font-family: var(--font-heading);
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, #cf6f95, #a84266);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 10px 18px rgba(168,66,102,.24);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .btn.secondary {
+      background: linear-gradient(135deg, #dcb778, #b88845);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 22px rgba(168,66,102,.28);
+    }
+
+    .schedule {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, #e6bbcb, #c7829f);
+    }
+
+    .time-card {
+      position: relative;
+      padding: 14px 14px 14px 18px;
+      background: linear-gradient(180deg, #fff9fb, #fff3f7);
+      border: 1px solid rgba(216, 132, 162, .24);
+      border-radius: 16px;
+      margin-left: 8px;
+    }
+
+    .time-card::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #cb6c90;
+      box-shadow: 0 0 0 4px rgba(203,108,144,.18);
+    }
+
+    .time {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      color: #8f3152;
+      margin-bottom: 4px;
+    }
+
+    .gallery-note, .footer-note {
+      font-family: var(--font-body);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #764d59;
+    }
+
+    .footer {
+      font-family: var(--font-heading);
+      padding: 8px 18px 28px;
+      text-align: center;
+      color: #7d5360;
+      font-size: 13px;
+    }
+
+    .music-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c9688d, #9f355a);
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 14px 30px rgba(159,53,90,.3);
+      cursor: pointer;
+    }
+
+    .ganesh-blessing {
+      width: 132px;
+      height: 132px;
+      margin: 2px auto 14px;
+      position: relative;
+      z-index: 4;
+      padding: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.82) 0%, rgba(255,244,247,0.58) 58%, rgba(255,255,255,0) 76%);
+      box-shadow: 0 10px 28px rgba(181, 124, 83, 0.14);
+    }
+
+    .ganesh-mantra {
+      width: auto;
+      height: auto;
+      max-width: 90%;
+      padding: 14px 20px;
+      display: inline-block;
+      font-family: 'Tiro Devanagari Marathi', 'Noto Sans Devanagari', serif;
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #8f2f50;
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,244,247,0.58));
+      border: 1px solid rgba(255,255,255,0.78);
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(173, 117, 74, 0.14);
+      text-shadow: 0 4px 10px rgba(186, 110, 140, 0.14);
+      letter-spacing: 0.6px;
+    }
+
+    .title,
+    .couple,
+    h2,
+    .venue-name,
+    .event-name,
+    .date-main {
+      text-shadow: 0 4px 14px rgba(186, 110, 140, 0.18);
+    }
+
+    .hero-card,
+    .section-card,
+    .event-box,
+    .time-card {
+      background-image:
+        linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,246,249,0.9)),
+        radial-gradient(circle at top right, rgba(255,214,228,0.16), transparent 35%);
+    }
+
+    @media (min-width: 700px) {
+      .page {
+        width: min(520px, calc(100% - 32px));
+      }
+
+      .hero {
+        min-height: 860px;
+      }
+
+      .stage {
+        width: 400px;
+        height: 320px;
+      }
+
+      .count-item strong {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-blur"></div>
+
+  <main class="page">
+    <div class="frame">
+      <div class="curtain left"></div>
+      <div class="curtain right"></div>
+      <div class="top-drape"></div>
+      <div class="flowers"></div>
+
+      <section class="hero" id="home">
+        <div class="monogram">SY</div>
+        <div class="eyebrow">शुभविवाह सोहळा</div>
+        <div class="ganesh-blessing ganesh-mantra" aria-label="गणेश मंत्र">༂ ॐ श्री गणेशाय नमः ༂</div>
+        <p class="tagline">आमच्या आयुष्यातील या सुंदर नव्या प्रवासाच्या शुभारंभाला आपण सप्रेम उपस्थित राहून आशीर्वाद द्यावा, ही नम्र विनंती.</p>
+        <div class="couple-wrap">
+          <div class="floral-line top-floral">❀ ❁ ✿ ❁ ❀</div>
+          <div class="couple"> स्वप्निल&nbsp;卐️&nbsp;स्वप्नाली </div>
+          <div class="floral-line bottom-floral">❀ ❁ ✿ ❁ ❀</div>
+        </div>
+
+        <div class="hero-card">
+          <div class="date-main">२१ एप्रिल २०२६</div>
+          <div class="meta">
+            <div><strong>वार:</strong> मंगळवार</div>
+            <div><strong>मुख्य स्थळ:</strong> नक्षत्र लॉन्स </div>
+          </div>
+          <div class="countdown" id="countdown">
+            <div class="count-item"><strong id="days">00</strong><span>दिवस</span></div>
+            <div class="count-item"><strong id="hours">00</strong><span>तास</span></div>
+            <div class="count-item"><strong id="minutes">00</strong><span>मिनिटे</span></div>
+            <div class="count-item"><strong id="seconds">00</strong><span>सेकंद</span></div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="ocean"></div>
+          <div class="grass"></div>
+          <div class="path"></div>
+          <div class="leaf"><span></span><span></span><span></span></div>
+          <div class="leaf right"><span></span><span></span><span></span></div>
+          <div class="mandap">
+            <div class="pillar left"></div>
+            <div class="pillar right"></div>
+          </div>
+          <div class="couple-photo-frame">
+            <img src="couple.jpg" alt="Couple photo" />
+          </div>
+        </div>
+      </section>
+
+      <section id="events">
+        <div class="section-card">
+          <h2>विवाह कार्यक्रम</h2>
+          <p class="section-sub">आमच्या आनंदसोहळ्यातील प्रत्येक सुंदर क्षणाचा साक्षीदार होण्यासाठी आपले हार्दिक स्वागत आहे.</p>
+          <div class="event-grid">
+            <div class="event-box">
+            <div class="event-box">
+              <div class="event-name">हळद समारंभ <span class="badge">विवाह दिवस</span></div>
+              <div class="info-line"><strong>दिनांक:</strong> २१ एप्रिल २०२६ </div>
+              <div class="info-line"><strong>वेळ:</strong> सकाळी ९:०० </div>
+              <div class="info-line"><strong>स्थळ:</strong> विवाहस्थळ </div>
+            </div>
+            <div class="event-box">
+              <div class="event-name">लग्न व फेरे <span class="badge">मुख्य दिवस</span></div>
+              <div class="info-line"><strong>दिनांक:</strong> २१ एप्रिल २०२६</div>
+              <div class="info-line"><strong>वरमाला व फेरे :</strong> सकाळी ११:४५</div>
+              <div class="info-line">🙏🏻 सर्व कुटुंबिय व मान्यवरची उपस्थितीत लग्न समारंभ संपन्न 🙏🏻</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="venue">
+        <div class="section-card venue-box">
+          <h2>दिनांक • वेळ • स्थळ</h2>
+          <p class="venue-name"> नक्षत्र लॉन्स </p>
+          <div class="info-line"><strong>लग्न:</strong> नक्षत्र लॉन्स</div>
+          <div class="info-line"><strong>पत्ता:</strong> नक्षत्र लॉन्स,पेनूर (पंढरपूर-मोहोळ रोड), ता.मोहोळ , जि.सोलापूर   </div>
+          <div class="info-line"><strong>नकाशा:</strong> खालील बटणावर क्लिक करून थेट Google Maps मध्ये स्थळ उघडा.</div>
+          <div class="btn-row">
+            <a class="btn" href="#events">कार्यक्रम पहा</a>
+            <a class="btn secondary" id="mapButton" href="https://www.google.com/maps/search/?api=1&query=Paradise+Beach+Resort+Goa" target="_blank" rel="noopener">नकाशा उघडा</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule">
+        <div class="section-card schedule">
+          <h2>लग्न दिवसाचे वेळापत्रक</h2>
+          <div class="timeline">
+            <div class="time-card">
+              <div class="time">सकाळी ९:००</div>
+              <div class="info-line">सर्व कुटुंबियांच्या उपस्थितीत वरवधू यांचा हळदी समारंभास सुरुवात.</div>
+            </div>
+            <div class="time-card">
+              <div class="time">सकाळी ११:४५</div>
+              <div class="info-line">कुटुंबियांच्या आशीर्वादासह व सर्व मान्यवरांच्या उपस्थितीत मंगलाष्टकास सुरुवात.</div>
+            </div>
+           </div>
+        </div>
+      </section>
+
+      <section id="blessings">
+        <div class="section-card">
+          <h2>आपली उपस्थिती हेच आमच्यासाठी अमूल्य भेट</h2>
+          <p class="gallery-note">आपले प्रेम, आशीर्वाद आणि आनंदी सहवास लाभावा, हीच आमची मनापासून इच्छा.</p>
+        </div>
+      </section>
+
+      <div class="footer">
+       🙏🏻 धन्यवाद 🙏🏻.
+      </div>
+    </div>
+  </main>
+
+  <button class="music-btn" id="musicToggle" aria-label="संगीत सुरू किंवा बंद करा">♫</button>
+
+  <audio id="bgMusic" loop>
+    <source src="" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const targetDate = new Date('2026-04-21T11:45:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const venueName = 'Paradise Beach Resort, Goa';
+    const venueLatitude = '';
+    const venueLongitude = '';
+
+    const mapButton = document.getElementById('mapButton');
+
+    if (venueLatitude && venueLongitude) {
+      mapButton.href = `https://www.google.com/maps/place/Nakshatra+Mangal+Karyalay+and+Lawns/@17.765763,75.4634303,15z/data=!4m10!1m2!2m1!1sfunction+hall+near+tungat!3m6!1s0x3bc43b8a38a3e0cf:0xe534cb8f1b2fb79e!8m2!3d17.7657625!4d75.4824844!15sChlmdW5jdGlvbiBoYWxsIG5lYXIgdHVuZ2F0WhsiGWZ1bmN0aW9uIGhhbGwgbmVhciB0dW5nYXSSAQxiYW5xdWV0X2hhbGzgAQA!16s%2Fg%2F11stjlp5hw?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D`;
+    } else {
+      mapButton.href = `https://www.google.com/maps/place/Nakshatra+Mangal+Karyalay+and+Lawns/@17.765763,75.4634303,15z/data=!4m10!1m2!2m1!1sfunction+hall+near+tungat!3m6!1s0x3bc43b8a38a3e0cf:0xe534cb8f1b2fb79e!8m2!3d17.7657625!4d75.4824844!15sChlmdW5jdGlvbiBoYWxsIG5lYXIgdHVuZ2F0WhsiGWZ1bmN0aW9uIGhhbGwgbmVhciB0dW5nYXSSAQxiYW5xdWV0X2hhbGzgAQA!16s%2Fg%2F11stjlp5hw?entry=ttu&g_ep=EgoyMDI2MDQwNS4wIKXMDSoASAFQAw%3D%3D`;
+    }
+
+    const musicBtn = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+    let playing = false;
+
+    musicBtn.addEventListener('click', async () => {
+      try {
+        if (!playing) {
+          await bgMusic.play();
+          musicBtn.textContent = '❚❚';
+          playing = true;
+        } else {
+          bgMusic.pause();
+          musicBtn.textContent = '♫';
+          playing = false;
+        }
+      } catch (error) {
+        alert('सर्वप्रथम audio tag मध्ये तुमच्या लग्नाच्या गाण्याची MP3 file जोडा.');
+      }
+    });
+  </script>
+</body>
+</html>
